@@ -134,31 +134,34 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Log.cpp" />
-    <ClCompile Include="CryptoUtils.cpp" />
-    <ClCompile Include="EACExtractor.cpp" />
-    <ClCompile Include="Utils\FileUtils.cpp" />
-    <ClCompile Include="GameConfig.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Utils\MemoryDumper.cpp" />
-    <ClCompile Include="Utils\ModuleDownloader.cpp" />
-    <ClCompile Include="Utils\PatternScanner.cpp" />
-    <ClCompile Include="miniz\miniz.c" />
-    <ClCompile Include="miniz\miniz_tinfl.c" />
-    <ClCompile Include="miniz\miniz_tdef.c" />
-    <ClCompile Include="miniz\miniz_zip.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Log.h" />
-    <ClInclude Include="CryptoUtils.h" />
-    <ClInclude Include="EACExtractor.h" />
-    <ClInclude Include="Utils\FileUtils.h" />
-    <ClInclude Include="GameConfig.h" />
-    <ClInclude Include="Utils\MemoryDumper.h" />
-    <ClInclude Include="Utils\ModuleDownloader.h" />
-    <ClInclude Include="Utils\PatternScanner.h" />
-  </ItemGroup>
+<ItemGroup>
+  <ClCompile Include="Log.cpp" />
+  <ClCompile Include="CryptoUtils.cpp" />
+  <ClCompile Include="EACExtractor.cpp" />
+  <ClCompile Include="Utils\FileUtils.cpp" />
+  <ClCompile Include="GameConfig.cpp" />
+  <ClCompile Include="main.cpp" />
+  <ClCompile Include="Utils\MemoryDumper.cpp" />
+  <ClCompile Include="Utils\ModuleDownloader.cpp" />
+  <ClCompile Include="Utils\PatternScanner.cpp" />
+  <ClCompile Include="Utils\kraken.cpp" />
+  <ClCompile Include="miniz\miniz.c" />
+  <ClCompile Include="miniz\miniz_tinfl.c" />
+  <ClCompile Include="miniz\miniz_tdef.c" />
+  <ClCompile Include="miniz\miniz_zip.c" />
+</ItemGroup>
+
+<ItemGroup>
+  <ClInclude Include="Log.h" />
+  <ClInclude Include="CryptoUtils.h" />
+  <ClInclude Include="EACExtractor.h" />
+  <ClInclude Include="Utils\FileUtils.h" />
+  <ClInclude Include="GameConfig.h" />
+  <ClInclude Include="Utils\MemoryDumper.h" />
+  <ClInclude Include="Utils\ModuleDownloader.h" />
+  <ClInclude Include="Utils\PatternScanner.h" />
+  <ClInclude Include="Utils\kraken.h" />
+</ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
