@@ -20,6 +20,11 @@
       "name": "Fortnite",
       "productId": "b2504259773b40e3a818f820e31979ca",
       "deploymentId": "47b56979fab54704970a6b1331d1e291"
+    },
+    {
+      "name": "VRChat",
+      "productId": "a4a57ff548934dbeba0cc7c62cdf9f34",
+      "deploymentId": "76151011566a4757ae955b380b05c378"
     }
   ]
 }
