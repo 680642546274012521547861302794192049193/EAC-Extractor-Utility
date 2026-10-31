@@ -1,0 +1,56 @@
+name: Build Windows Binaries
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            platform: x64
+          - arch: x86
+            platform: Win32
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: ${{ matrix.arch }}
+
+      - name: Build ${{ matrix.arch }}
+        shell: powershell
+        run: |
+          msbuild "DecryptEACPayload.sln" `
+            /t:Build `
+            /p:Configuration=Release `
+            /p:Platform="${{ matrix.platform }}" `
+            /p:OutDir="bin\${{ matrix.arch }}\" `
+            /p:IntDir="obj\${{ matrix.arch }}\" `
+            /m
+
+      - name: Package ${{ matrix.arch }} as zip
+        shell: powershell
+        run: |
+          $zipPath = Join-Path $env:GITHUB_WORKSPACE "DecryptEACPayload-${{ matrix.arch }}.zip"
+          $sourceDir = Join-Path $env:GITHUB_WORKSPACE "bin\${{ matrix.arch }}"
+          if (-not (Test-Path $sourceDir)) {
+            throw "Build output not found: $sourceDir"
+          }
+          Compress-Archive -Path (Join-Path $sourceDir "*") -DestinationPath $zipPath -Force
+
+      - name: Upload ${{ matrix.arch }} artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DecryptEACPayload-${{ matrix.arch }}
+          path: DecryptEACPayload-${{ matrix.arch }}.zip
